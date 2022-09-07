@@ -19,7 +19,20 @@ import { UserInfos,UserPerformance ,UserActivity,UserAverageSessions}
 import FetchingApi from "../Services/FetchingApi";
 
 function Home() {
-  const id = useParams().id;
+
+   /**
+         * GETTING THE ID
+         * @param {number} id GETTING THE ID
+         * @returns {number}
+         */
+    
+   
+   const id = useParams().id;
+    /**
+         * GETTING THE METHOD OF FETCHING (FROM DATA OR BACKEND)
+         * @param {boolean} ApiMethod GETTING THE METHOD OF FETCHING (FROM DATA OR BACKEND)
+         * @returns {boolean}
+         */     
   const ApiMethod = false;
 
 

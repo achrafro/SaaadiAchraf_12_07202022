@@ -20,18 +20,39 @@ import {
 import datas from "../Data/Data.js";
 
 function FetchingApi(props) {
-  const identificateur = props.id;
-  const method = props.switch;
 
+    /**
+         * getting user id
+         * @param {number} identificateur getting user id
+         * @returns {number}
+         */
+
+  const identificateur = props.id;
+      /**
+         * getting method from props (FROM DATA OR BACKEND)
+         * @param {string} method getting method from props (FROM DATA OR BACKEND)
+         * @returns {string}
+         */
+  const method = props.switch;
+   /**
+         * POINTER TO KNOW THE EXACT ID
+         * @param {number} curseur POINTER TO KNOW THE EXACT ID
+         * @returns {number}
+         */
   let curseur = 0;
-  let isAPI = false;
+  /**
+         * GETTING THE ID
+         * @param {number} IDD GETTING THE ID
+         * @returns {number}
+         */
 
   const IDD = useParams().id;
 
   useEffect(() => {
+
     function switchAPI(method, identificateur) {
-      console.log(method);
-      if (method == true) {
+
+       if (method != true) {
         console.log("loading from Data File");
 
         if (IDD == datas.USER_MAIN_DATA[0].id) {
@@ -46,7 +67,10 @@ function FetchingApi(props) {
         SetUserPerform(datas.USER_PERFORMANCE[curseur]);
         SetActivitySession(datas.USER_ACTIVITY[curseur].sessions);
         SetUserAverageSession(datas.USER_AVERAGE_SESSIONS[curseur].sessions);
-      } else {
+      } 
+      
+      else {
+
         console.log("loading data from Back End");
 
         /**
