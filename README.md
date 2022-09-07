@@ -18,7 +18,7 @@ The yarn dev command will allow you to run the micro API.
 run the yarn dev command.  
 2 - install the front-end    
 clone the repo in folder of project :     
-git clone https://github.com/achrafro/SaadiAchraf_12_07202022/tree/master  
+git clone https://github.com/achrafro/SaaadiAchraf_12_07202022
 to install dependencies :  
 npm install  
 then : npm start  
