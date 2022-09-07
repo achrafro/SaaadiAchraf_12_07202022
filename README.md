@@ -39,7 +39,7 @@ git clone https://github.com/OpenClassrooms-Student-Center/P9-front-end-dashboar
  
 2 - Installation de front-end  
 cloner la repository en meme dossier de project :   
-git clone https://github.com/achrafro/SaadiAchraf_12_07202022/tree/master  
+git clone https://github.com/achrafro/SaaadiAchraf_12_07202022  
  - Installation des dependencies :   
 npm install  
 aprés : npm start  
