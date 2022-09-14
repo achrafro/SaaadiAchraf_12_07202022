@@ -46,3 +46,6 @@ git clone https://github.com/achrafro/SaaadiAchraf_12_07202022
 npm install  
 aprés : npm start  
 Front-end est generer sur l'url :  http://localhost:3000   
+
+si vous voulez recuperer les coordonnés de chaque utilisateur via API SERVER vous devez changer ApiMethod (ligne 61  FetchingApi.js) a "server"  
+si vous voulez recuperer les coordonnés de chaque utilisateur via fichier data vous devez changer ApiMethod (ligne 61  FetchingApi.js) a "line"  
