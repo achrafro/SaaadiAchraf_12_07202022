@@ -22,7 +22,9 @@ git clone https://github.com/achrafro/SaaadiAchraf_12_07202022
 to install dependencies :  
 npm install  
 then : npm start  
-Front-end is  rendered at  http://localhost:3000   
+Front-end is  rendered at  http://localhost:3000  
+If You Want to get data from API SERVER You must change ApiMethod(line 61 in FetchingApi.js) to "server"
+If You want to get data From Data File you must change ApiMethod(line 61 in FetchingApi.js) to "file"
 
 # Installation (Français)
 
