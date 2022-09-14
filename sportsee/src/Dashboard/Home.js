@@ -33,12 +33,11 @@ function Home() {
          * @param {boolean} ApiMethod GETTING THE METHOD OF FETCHING (FROM DATA OR BACKEND)
          * @returns {boolean}
          */     
-  const ApiMethod = false;
 
 
   return (
     <>
-      <FetchingApi switch={ApiMethod} id={id}> 
+      <FetchingApi > 
       
       </FetchingApi>
     </>

@@ -9,14 +9,14 @@ function Notfound() {
 <Header></Header>
 <Siderbar></Siderbar>
 
-<div class="error-center">
+<div className="error-center">
 
-<h1 class="error-404">
+<h1 className="error-404">
   <span>404</span>
 </h1>
 
-<h2 class="title">Page non trouvée</h2>
-<p class="message">
+<h2 className="title">Page non trouvée</h2>
+<p className="message">
   La page que vous avez demandée n'existe pas.
   <br />
 </p>

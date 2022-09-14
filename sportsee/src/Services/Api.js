@@ -14,8 +14,7 @@ export const UserInfos = async (id) => {
 		const response = await instance.get(`/${id}`);
 		return response.data;
 	} catch (e) {
-		console.log(e);
-	}
+ 	}
 };
 
 
@@ -29,8 +28,7 @@ export const UserInfos = async (id) => {
 		const response = await instance.get(`/${id}/average-sessions`);
 		return response.data;
 	} catch (e) {
-		console.log(e);
-	}
+ 	}
 };
 
 /**
@@ -43,8 +41,7 @@ export const UserPerformance = async (id) => {
 		const response = await instance.get(`/${id}/performance`);
 		return response.data;
 	} catch (e) {
-		console.log(e);
-	}
+ 	}
 };
 
 /**
@@ -57,7 +54,6 @@ export const UserActivity = async (id) => {
 		const response = await instance.get(`/${id}/activity`);
 		return response.data;
 	} catch (e) {
-		console.log(e);
-	}
+ 	}
 };
 

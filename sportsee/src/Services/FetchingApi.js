@@ -19,7 +19,8 @@ import {
 } from "../Services/Api";
 import datas from "../Data/Data.js";
 
-function FetchingApi(props) {
+function FetchingApi() {
+
 
     /**
          * getting user id
@@ -27,14 +28,12 @@ function FetchingApi(props) {
          * @returns {number}
          */
 
-  const identificateur = props.id;
-      /**
+       /**
          * getting method from props (FROM DATA OR BACKEND)
          * @param {string} method getting method from props (FROM DATA OR BACKEND)
          * @returns {string}
          */
-  const method = props.switch;
-   /**
+    /**
          * POINTER TO KNOW THE EXACT ID
          * @param {number} curseur POINTER TO KNOW THE EXACT ID
          * @returns {number}
@@ -47,18 +46,36 @@ function FetchingApi(props) {
          */
 
   const IDD = useParams().id;
+   /**
+   * import l'Id a partir de lien
+   * @param {string} id Id d'utilisateur
+   * @returns {object}
+   */
+
+    const id = useParams().id;  
 
   useEffect(() => {
 
-    function switchAPI(method, identificateur) {
+    function switchAPI() {
+      const ApiMethod = "server";
 
-       if (method != true) {
+      console.log(ApiMethod);
+
+       if (ApiMethod == "file") {
         console.log("loading from Data File");
 
         if (IDD == datas.USER_MAIN_DATA[0].id) {
           curseur = 0;
-        } else {
+          SetisIdCorrect(true);
+        } else if  (IDD == datas.USER_MAIN_DATA[1].id){
           curseur = 1;
+          SetisIdCorrect(true);
+
+        }
+        else {
+
+          SetisIdCorrect(false);
+
         }
 
         setUserName(datas.USER_MAIN_DATA[curseur].userInfos.firstName);
@@ -69,9 +86,26 @@ function FetchingApi(props) {
         SetUserAverageSession(datas.USER_AVERAGE_SESSIONS[curseur].sessions);
       } 
       
-      else {
+      else if (ApiMethod == "server"){
 
         console.log("loading data from Back End");
+ 
+//  test if ID  is correct : 
+
+  /**
+   * l'url de back end
+   * @param {string} url l'url de back end
+   * @returns {object}
+   */
+
+  const url = "http://localhost:4000/user/" + id + "/";
+  
+        axios
+        .get(url)
+        .then((res) => {
+          SetisIdCorrect(true);
+          console.log("True");
+
 
         /**
          * geting user info
@@ -79,7 +113,7 @@ function FetchingApi(props) {
          * @returns {object}
          */
 
-        const getUserInfos = async () => {
+         const getUserInfos = async () => {
           const request = await UserInfos(id);
           setUserName(request.data.userInfos.firstName);
           SetUserMainData(request.data.keyData);
@@ -123,10 +157,24 @@ function FetchingApi(props) {
           SetUserAverageSession(request.data.sessions);
         };
         getUserAverageSessions();
+
+
+        })
+        .catch((err) => {
+           console.log(err.code);
+           if (err.code == "ERR_NETWORK"){
+
+            console.log("server is Down, please run the server ..!");
+           }
+           SetisIdCorrect(false);
+
+         });
+
+
       }
     }
-
     switchAPI();
+
   }, []);
 
   /**
@@ -168,32 +216,10 @@ function FetchingApi(props) {
 
   const [isIdCorrect, SetisIdCorrect] = useState(true);
 
-  /**
-   * import l'Id a partir de lien
-   * @param {string} id Id d'utilisateur
-   * @returns {object}
-   */
+  const [IsServerOk, SetIsServerOk] = useState(true);
 
-  const id = useParams().id;
-  /**
-   * l'url de back end
-   * @param {string} url l'url de back end
-   * @returns {object}
-   */
 
-  const url = "http://localhost:4000/user/" + id + "/";
-
-  useEffect(() => {
-    //  Check if id is correct :
-    axios
-      .get(url)
-      .then((res) => {
-        SetisIdCorrect(true);
-      })
-      .catch((err) => {
-        SetisIdCorrect(false);
-      });
-  }, []);
+ 
   return (
     <>
       {!isIdCorrect ? (
@@ -218,6 +244,8 @@ function FetchingApi(props) {
           </div>
         </>
       )}
+
+       
     </>
   );
 }
